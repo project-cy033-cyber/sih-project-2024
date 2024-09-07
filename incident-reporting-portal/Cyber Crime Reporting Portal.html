@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Crime Reporting Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="cat">
+            <div class="ear ear--left"></div>
+            <div class="ear ear--right"></div>
+            <div class="face">
+                <div class="eye eye--left">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="eye eye--right">
+                    <div class="eye-pupil"></div>
+                </div>
+                <div class="muzzle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display:none;">
+        <header>
+            <h1>Cyber Crime Reporting Portal</h1>
+        </header>
+        <main>
+            <ul>
+                <li><a href="track_status.html">Track the Status of Your Cyber Crime Complaints</a></li>
+                <li><a href="register_other.html">Register Other Types of Cyber Crimes</a></li>
+                <li><a href="report_fraud.html">Report Financial Fraud through the National Cyber Crime Reporting Portal</a></li>
+                <li><a href="report_women_children.html">Report Cyber Crimes Related to Women and Children</a></li>
+            </ul>
+        </main>
+    </div>
+
+    <script>
+        // Hide loader after 3 seconds and show main content
+        window.onload = function() {
+            setTimeout(function(){
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000);
+        };
+    </script>
+</body>
+</html>

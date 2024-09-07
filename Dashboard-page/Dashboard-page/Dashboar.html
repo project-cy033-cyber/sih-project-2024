@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Incidents Feed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMgx8PzhlcuFfXRYT2zl4t4c42aATKdbH/6Rt5" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+
+    <style>
+        :root {
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(240, 10%, 3.9%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(240, 10%, 3.9%);
+            --popover: hsl(0, 0%, 100%);
+            --popover-foreground: hsl(240, 10%, 3.9%);
+            --primary: hsl(240, 5.9%, 10%);
+            --primary-foreground: hsl(0, 0%, 98%);
+            --secondary: hsl(240, 4.8%, 95.9%);
+            --secondary-foreground: hsl(240, 5.9%, 10%);
+            --muted: hsl(240, 4.8%, 95.9%);
+            --muted-foreground: hsl(240, 3.8%, 45%);
+            --accent: hsl(240, 4.8%, 95.9%);
+            --accent-foreground: hsl(240, 5.9%, 10%);
+            --destructive: hsl(0, 72%, 51%);
+            --destructive-foreground: hsl(0, 0%, 98%);
+            --border: hsl(240, 5.9%, 90%);
+            --input: hsl(240, 5.9%, 90%);
+            --ring: hsl(240, 5.9%, 10%);
+            --radius: 0.5rem;
+            --font-sans-serif: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans-serif);
+            background-color: var(--background);
+            color: var(--foreground);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background-color: var(--background);
+            border-bottom: 1px solid var(--border);
+        }
+
+        header a {
+            text-decoration: none;
+            color: var(--foreground);
+            font-weight: bold;
+        }
+
+        header nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        header nav a {
+            color: var(--muted-foreground);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        header nav a:hover {
+            color: var(--foreground);
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--muted);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card);
+            color: var(--card-foreground);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--muted-foreground);
+        }
+
+        footer {
+            padding: 1rem 2rem;
+            background-color: var(--background);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Image filters */
+        img[src="/placeholder.svg"], img[src="/placeholder-user.jpg"] {
+            filter: sepia(.3) hue-rotate(-60deg) saturate(.5) opacity(0.8);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+ 
+
+<header>
+    <a href="#">Cyber Incidents Feed</a>
+    <nav>
+        <a href="/Dashboard-page/Dashboard-page/d1.html">Data Collection</a>
+        <a href="/index.html">Home</a>
+        <a href="#">Incident Analysis</a>
+        <a href="#">Reporting</a>
+        <a href="#">Settings</a>
+    </nav>
+    <div>
+        <img src="/placeholder.svg" alt="Avatar">
+
+        
+        
+    </div>
+
+    
+</header>
+
+<main>
+    <div class="container">
+        <div class="card">
+            <h3 href="" >Data Collection</h3>
+            <p>Scrape data from forums, pastes, and dark web sources.</p>
+        </div>
+        <div class="card">
+            <h3>Machine Learning</h3>
+            <p>Identify relevant data and categorize incidents using ML.</p>
+        </div>
+        <div class="card">
+            <h3>Incident Analysis</h3>
+            <p>Analyze and correlate cyber incidents across platforms.</p>
+        </div>
+        <div class="card">
+            <h3>Reporting</h3>
+            <p>Generate detailed reports on cyber incidents for stakeholders.</p>
+        </div>
+        <div class="card">
+            <h3>Continuous Monitoring</h3>
+            <p>Regularly update the data with continuous monitoring.</p>
+        </div>
+        <div class="card">
+            <h3>Settings</h3>
+            <p>Configure your preferences for data collection and reporting.</p>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+</main>
+
+
+
+<div>
+    <iframe src="https://livethreatmap.radware.com/"  height="600px" width="100%" >Real Time Feeds of Cyber Incident</iframe>
+
+</div>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<footer>
+    &copy; 2024 Cyber Incidents Feed
+</footer>
+
+</body>
+</html>

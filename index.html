@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- amCharts Libraries -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--   disable inspect element in website   -->
+  <script>
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+  </script>
+
+
+  <!--   You can block the keyboard shortcuts for developer tools (such as F12, Ctrl+Shift+I, etc.):-->
+
+  <script>
+    document.onkeydown = function (e) {
+      if (e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key === "I") ||
+        (e.ctrlKey && e.shiftKey && e.key === "J") ||
+        (e.ctrlKey && e.key === "U")) {
+        return false;
+      }
+    };
+  </script>
+
+
+
+
+
+  <script>
+    // Disable right-click
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("Not allowed!");
+    }, false);
+
+    // Disable specific key combinations like Ctrl + U, Ctrl + Shift + I, etc.
+    document.addEventListener("keydown", function (e) {
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        alert("Not allowed!");
+      }
+
+      // Disable Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        alert("Not allowed!");
+      }
+
+      // Disable F12 (Developer Tools)
+      if (e.key === 'F12') {
+        e.preventDefault();
+        alert("Not allowed!");
+      }
+    });
+  </script>
+
+  <div class=" bg-white">
+
+    <div class="container-fluid p-0 fixed-top mb-5 ">
+      <!-- navbar -->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-white fs-5 px-4 m-0 fw-bold border-bottom border-dark border-2">
+        <a class="navbar-brand" href="#"><img src="images/logo.png" height="40px" alt="" width="170" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav text-center">
+            <li class="nav-item active">
+              <a class="nav-link active" href="#nav">Home <span class="sr-only"></span></a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+
+
+
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Choose Cyber Incident
+              </a>
+              <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">financial-fraud</a>
+                <a class="dropdown-item" href="#">financial-fraud</a>
+                <a class="dropdown-item" href="#">Cyber Incident</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Dashboard-page/Dashboard-page/Dashboar.html">Dashbord</a>
+            </li>
+
+
+
+
+            <!--          Search                    -->
+
+
+
+            <div>
+
+              <style>
+                .search-container {
+                  margin-left: 20px;
+                  /* Adjust as needed */
+                  margin-right: 20px;
+                  /* Adjust as needed */
+                }
+
+                .search-container input::placeholder {
+                  transition: opacity 0.5s ease;
+                }
+              </style>
+
+
+              <form class="d-flex search-container">
+                <input id="searchInput" class="form-control me-2" type="search" placeholder="Search"
+                  aria-label="Search">
+              </form>
+
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const searchInput = document.getElementById('searchInput');
+                  const placeholders = [
+                    'Search for something...',
+                    'Looking for something?',
+                    'Find what you need...',
+                    'Try a different keyword...'
+                  ];
+                  let currentPlaceholderIndex = 0;
+                  let currentText = '';
+                  let currentCharIndex = 0;
+
+                  function updatePlaceholder() {
+                    const placeholder = placeholders[currentPlaceholderIndex];
+                    if (currentCharIndex < placeholder.length) {
+                      currentText += placeholder[currentCharIndex];
+                      searchInput.placeholder = currentText;
+                      currentCharIndex++;
+                    } else {
+                      // Move to the next placeholder
+                      currentCharIndex = 0;
+                      currentText = '';
+                      currentPlaceholderIndex = (currentPlaceholderIndex + 1) % placeholders.length;
+                    }
+                  }
+
+                  setInterval(updatePlaceholder, 100); // Update every 100ms
+
+                  // Initial call to set the first placeholder
+                  updatePlaceholder();
+                });
+              </script>
+
+
+
+
+            </div>
+
+
+
+
+
+            <!--          Account iscon                     -->
+
+
+            <li class="nav-item"></li>
+            <li>
+              <a class="nav-link" href="./Profile-Page/Profile.html">
+                <i class='fas fa-user-secret' style='font-size:24px;color:red;'></i>
+              </a>
+            </li>
+
+
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid p-0 mt-5 " id="nav">
+      <!-- slider -->
+      <div id="carouselExampleInterval" class="carousel slide position-relative" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="1000">
+            <img src="images/slide1.png" height="500px" class="d-block w-100 rounded" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ipsam, nam.
+              </h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Exercitationem nostrum amet vel laudantium? Veniam reiciendis
+                temporibus officia ratione neque facere, debitis eius
+                dignissimos voluptatum dolor.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="1000">
+            <img src="images/slide2.png" height="500px" class="d-block w-100 rounded" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ipsam, nam.
+              </h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Exercitationem nostrum amet vel laudantium? Veniam reiciendis
+                temporibus officia ratione neque facere, debitis eius
+                dignissimos voluptatum dolor.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="2000">
+            <img src="images/slid3.jpeg" class="d-block w-100 rounded" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ipsam, nam.
+              </h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Exercitationem nostrum amet vel laudantium? Veniam reiciendis
+                temporibus officia ratione neque facere, debitis eius
+                dignissimos voluptatum dolor.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" data-interval="2000">
+            <img src="images/main4" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ipsam, nam.
+              </h2>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Exercitationem nostrum amet vel laudantium? Veniam reiciendis
+                temporibus officia ratione neque facere, debitis eius
+                dignissimos voluptatum dolor.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="row mt-5" data-aos="zoom-in-down">
+      <!-- heading -->
+      <h1 class="col-md-6 text-center">About Us</h1>
+      <h1 class="col-md-6 text-center">Sign In</h1>
+    </div>
+
+    <div class="container-fluid p-0">
+      <!-- about and form-->
+      <div class="row">
+        <div class="col-md-5 col-12 bg-danger text-white rounded-pill mx-auto mt-5">
+          <img src="images/about.png" class="mx-auto d-block rounded-circle mt-3" width="200px" alt="" />
+          <h4 class="text-center m-1 text-info">
+            <span class="text-dark"> Meet</span> Over team
+          </h4>
+          <p class="text-wrap col-md-8 mx-auto text-center">
+            Ransomware
+            A type of malware that encrypts data and demands a ransom to regain access.
+
+            Malware
+            Software that can be loaded onto a computer without the user's knowledge or consent, gathering information
+            and sending it to a hacker
+            <button class="btn btn-primary rounded-pill mt-3">
+              Known More
+            </button>
+          </p>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Sign In and Sign Up Form -->
+        <div class="col-md-5 col-12 mx-auto">
+          <div class="container-fluid p-1">
+            <!-- Nav Tabs -->
+            <ul class="nav nav-tabs mt-5" id="authTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup"
+                  type="button" role="tab" aria-controls="signup" aria-selected="true">
+                  Sign Up
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="signin-tab" data-bs-toggle="tab" data-bs-target="#signin" type="button"
+                  role="tab" aria-controls="signin" aria-selected="false">
+                  Sign In
+                </button>
+              </li>
+            </ul>
+
+            <!-- Tab Contents -->
+            <div class="tab-content" id="authTabContent">
+              <!-- Sign Up Form -->
+              <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                <form class="bg-success p-5 rounded text-white">
+                  <div class="mb-3">
+                    <label for="signupEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="signupEmail" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signupPassword" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="signupAddress" placeholder="1234 Main St" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupAddress2" class="form-label">Address 2</label>
+                    <input type="text" class="form-control" id="signupAddress2"
+                      placeholder="Apartment, studio, or floor">
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupCity" class="form-label">City</label>
+                    <input type="text" class="form-control" id="signupCity" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupState" class="form-label">State</label>
+                    <select id="signupState" class="form-select" required>
+                      <option value="" selected disabled>Choose...</option>
+                      <!-- U.S. States -->
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <!-- Add other states here -->
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signupZip" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="signupZip" required>
+                  </div>
+                  <div class="mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="signupCheck" required>
+                      <label class="form-check-label text-white" for="signupCheck">I agree to the terms and
+                        conditions</label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-light w-100">Sign Up</button>
+                </form>
+              </div>
+
+              <!-- Sign In Form -->
+              <div class="tab-pane fade" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                <form class="bg-primary p-5 rounded text-white">
+
+                  <div class="mb-3">
+                    <label for="signinEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="signinEmail" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="signinPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="signinPassword" required>
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="signinCheck">
+                    <label class="form-check-label" for="signinCheck"> Remember me</label>
+                  </div>
+                  <button type="submit" class="btn btn-light w-100">Sign In</button>
+
+
+
+
+
+
+
+
+                  <!--     Sign in with social medio e.g google , facbook etc                                -->
+
+                  <style>
+                    body {
+                      font-family: Arial, Helvetica, sans-serif;
+                    }
+
+                    * {
+                      box-sizing: border-box;
+                    }
+
+                    /* style the container */
+                    .container {
+                      position: relative;
+                      border-radius: 5px;
+                      background-color: #f2f2f2;
+                      padding: 20px 0 30px 0;
+                    }
+
+                    /* style inputs and link buttons */
+                    input,
+                    .btn {
+                      width: 100%;
+                      padding: 12px;
+                      border: none;
+                      border-radius: 4px;
+                      margin: 5px 0;
+                      opacity: 0.85;
+                      display: inline-block;
+                      font-size: 17px;
+                      line-height: 20px;
+                      text-decoration: none;
+                      /* remove underline from anchors */
+                    }
+
+
+                    .fb {
+                      background-color: #3B5998;
+                      color: white;
+                    }
+
+                    .twitter {
+                      background-color: #55ACEE;
+                      color: white;
+                    }
+
+                    .google {
+                      background-color: #dd4b39;
+                      color: white;
+                    }
+
+                    /* style the submit button */
+                    input[type=submit] {
+                      background-color: #04AA6D;
+                      color: white;
+                      cursor: pointer;
+                    }
+
+                    input[type=submit]:hover {
+                      background-color: #45a049;
+                    }
+
+                    /* bottom container */
+                    .bottom-container {
+                      text-align: center;
+                      background-color: #666;
+                      border-radius: 0px 0px 4px 4px;
+                    }
+
+                    /* bottom container */
+                    .bottom-container {
+                      text-align: center;
+                      background-color: #666;
+                      border-radius: 0px 0px 4px 4px;
+                    }
+                  </style>
+
+                  <body>
+                    <div class="container">
+                      <div class="row">
+
+                        <div class="col">
+                          <a href="#" class="fb btn">
+                            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                          </a>
+                          <a href="#" class="twitter btn">
+                            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                          </a>
+                          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                            </i> Login with Google+
+                          </a>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="bottom-container">
+                      <div class="row">
+                        <div class="col">
+
+                        </div>
+                        <div class="col">
+                          <a href="#" style="color:white" class="btn">Forgot password?</a>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- Feature Section -->
+    <div class="container mt-5">
+      <h1 class="text-center">Feature</h1>
+      <div class="row mt-4">
+        <!-- Incident Cards -->
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Major Data Breach.png" class="card-img-top" height="200px" alt="Major Data Breach">
+            <div class="card-body">
+              <h5 class="card-title">Major Data Breach</h5>
+              <p class="card-text">Sensitive customer data from a major financial institution was leaked, affecting over
+                1 million users.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Ransomware Attack.png" class="card-img-top" height="200px" alt="Ransomware Attack">
+            <div class="card-body">
+              <h5 class="card-title">Ransomware Attack</h5>
+              <p class="card-text">A global ransomware attack locked down servers at multiple corporations, demanding a
+                $500,000 ransom in Bitcoin.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Phishing Scam.png" class="card-img-top" height="200px" alt="Phishing Scam">
+            <div class="card-body">
+              <h5 class="card-title">Phishing Scam</h5>
+              <p class="card-text">A sophisticated phishing campaign targeted employees of a tech company, leading to
+                the theft of sensitive login credentials.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/DDoS Attack.png" class="card-img-top" height="200px" alt="DDoS Attack">
+            <div class="card-body">
+              <h5 class="card-title">DDoS Attack</h5>
+              <p class="card-text">A large-scale Distributed Denial of Service (DDoS) attack took down the website of a
+                major online retailer for hours.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Incident Cards -->
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Major Data Breach.png" class="card-img-top" height="200px" alt="Major Data Breach">
+            <div class="card-body">
+              <h5 class="card-title">Major Data Breach</h5>
+              <p class="card-text">Sensitive customer data from a major financial institution was leaked, affecting over
+                1 million users.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Ransomware Attack.png" class="card-img-top" height="200px" alt="Ransomware Attack">
+            <div class="card-body">
+              <h5 class="card-title">Ransomware Attack</h5>
+              <p class="card-text">A global ransomware attack locked down servers at multiple corporations, demanding a
+                $500,000 ransom in Bitcoin.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/Phishing Scam.png" class="card-img-top" height="200px" alt="Phishing Scam">
+            <div class="card-body">
+              <h5 class="card-title">Phishing Scam</h5>
+              <p class="card-text">A sophisticated phishing campaign targeted employees of a tech company, leading to
+                the theft of sensitive login credentials.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-4">
+            <img src="images/DDoS Attack.png" class="card-img-top" height="200px" alt="DDoS Attack">
+            <div class="card-body">
+              <h5 class="card-title">DDoS Attack</h5>
+              <p class="card-text">A large-scale Distributed Denial of Service (DDoS) attack took down the website of a
+                major online retailer for hours.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Incident 1 -->
+        <!-- Incident 2 -->
+        <!-- Incident 3 -->
+        <!-- Incident 4 -->
+      </div>
+      <iframe src="./Dashboard-page/Dashboard-page/d1.html" height="600px" width="100%">Real Time Feeds of Cyber
+        Incident</iframe>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container-fluid bg-primary py-3 m-0">
+        <p class="text-center text-white">&copy; CopyRight All Rights Reserved</p>
+      </div>
+      <div>
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <title>Chatbot</title>
+
+        <!-- Link to external CSS file -->
+        <link rel="stylesheet" href="./Chat-bot/style.css">
+
+        <!-- Chatbot JS (Loaded after DOM is ready) -->
+        <script src="./Chat-bot/script.js" defer></script>
+
+        <!-- Chatbot UI elements -->
+        <button class="chatbot-toggler">
+          <div class="chatbot-image">
+            <img src="./images/chat-bot.png" alt="Chatbot Image" width="50" height="50">
+          </div>
+          <span class="material-symbols-rounded"></span>
+          <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <div class="chatbot">
+          <header>
+            <h2>Chatbot</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+          </header>
+
+
+
+
+          <ul class="chatbox">
+            <li class="chat incoming">
+              <span class="material-symbols-outlined">smart_toy</span>
+              <p>Hi there! <br>How can I help you today?</p>
+            </li>
+          </ul>
+
+          <div class="chat-input">
+            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </div>
+</body>
+
+</html>

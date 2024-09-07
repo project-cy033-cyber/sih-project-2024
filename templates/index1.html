@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Cyber Incident Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Cyber Incident Monitoring Dashboard</h1>
+    </header>
+    <main>
+        <section id="alerts">
+            <h2>Recent Alerts</h2>
+            <ul id="alert-list">
+                <!-- Alerts will be dynamically inserted here -->
+            </ul>
+        </section>
+    </main>
+    <script>
+        function fetchAlerts() {
+            $.getJSON('/alerts', function(data) {
+                $('#alert-list').empty();
+                data.forEach(function(alert) {
+                    $('#alert-list').append('<li>' + alert + '</li>');
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            fetchAlerts();  // Initial fetch
+            setInterval(fetchAlerts, 5000);  // Fetch alerts every 5 seconds
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

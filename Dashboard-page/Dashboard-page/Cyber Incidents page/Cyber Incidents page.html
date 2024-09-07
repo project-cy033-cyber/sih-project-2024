@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Incident Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <!-- Cyber Incidents Chart -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cyber Incidents</h5>
+                    <canvas id="cyberIncidentsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Incident Trends Chart -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Incident Trends</h5>
+                    <canvas id="incidentTrendsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Incident Severity Chart -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Incident Severity</h5>
+                    <canvas id="incidentSeverityChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Affected Systems Chart -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Affected Systems</h5>
+                    <canvas id="affectedSystemsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Cyber Incidents Table -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Recent Cyber Incidents</h5>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Incident</th>
+                        <th>Category</th>
+                        <th>Severity</th>
+                        <th>Affected Systems</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SQL Injection Attack</td>
+                        <td>Web Application</td>
+                        <td>High</td>
+                        <td>Web Server</td>
+                        <td>2023-06-15</td>
+                    </tr>
+                    <tr>
+                        <td>Phishing Campaign</td>
+                        <td>Social Engineering</td>
+                        <td>Medium</td>
+                        <td>Employee Accounts</td>
+                        <td>2023-05-28</td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware Attack</td>
+                        <td>Malware</td>
+                        <td>High</td>
+                        <td>Database Servers</td>
+                        <td>2023-04-20</td>
+                    </tr>
+                    <tr>
+                        <td>DDoS Attack</td>
+                        <td>Network</td>
+                        <td>Medium</td>
+                        <td>Web Application</td>
+                        <td>2023-03-10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Cyber Incidents Chart
+    const cyberIncidentsCtx = document.getElementById('cyberIncidentsChart').getContext('2d');
+    const cyberIncidentsChart = new Chart(cyberIncidentsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Cyber Incidents',
+                data: [100, 150, 130, 180, 120, 90],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+
+    // Incident Trends Chart
+    const incidentTrendsCtx = document.getElementById('incidentTrendsChart').getContext('2d');
+    const incidentTrendsChart = new Chart(incidentTrendsCtx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+                {
+                    label: 'Trend 1',
+                    data: [50, 100, 150, 100, 50, 200],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: false
+                },
+                {
+                    label: 'Trend 2',
+                    data: [100, 50, 200, 150, 100, 150],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: false
+                }
+            ]
+        }
+    });
+
+    // Incident Severity Chart
+    const incidentSeverityCtx = document.getElementById('incidentSeverityChart').getContext('2d');
+    const incidentSeverityChart = new Chart(incidentSeverityCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                data: [111, 125, 98, 130, 150, 180],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ]
+            }]
+        }
+    });
+
+    // Affected Systems Chart
+    const affectedSystemsCtx = document.getElementById('affectedSystemsChart').getContext('2d');
+    const affectedSystemsChart = new Chart(affectedSystemsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Affected Systems',
+                data: [90, 160, 120, 150, 110, 80],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

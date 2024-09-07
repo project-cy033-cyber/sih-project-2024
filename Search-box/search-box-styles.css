@@ -1,0 +1,22 @@
+/* Custom styles for the header and search box */
+.header {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd; /* Optional: bottom border for separation */
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control {
+    border: 2px solid #007bff; /* Outline color */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+.form-control:focus {
+    box-shadow: none; /* Remove default focus shadow */
+    border-color: #0056b3; /* Change border color on focus */
+}
